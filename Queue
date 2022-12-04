@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 5
+int queue[N];
+int front = -1;
+int rear = -1;
+int choice, i, x;
+
+void enqueue(void);
+void dequeue(void);
+void display(void);
+void peek(void);
+
+int main()
+{
+
+    printf("Queue[MAX=5]:");
+
+    printf("\n\t Queue OPERATIONS USING ARRAY");
+    printf("\n\t--------------------------------");
+    printf("\n\t 1.Enqueue\n\t 2.Dequeue\n\t 3.Peek\n\t 4.DISPLAY\n\t 5.EXIT");
+    for (;;)
+    {
+        printf("\n Enter the Choice:");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+        {
+            enqueue();
+            break;
+        }
+        case 2:
+        {
+            dequeue();
+            break;
+        }
+        case 3:
+        {
+            peek();
+            break;
+        }
+        case 4:
+        {
+            display();
+            break;
+        }
+
+        case 5:
+        {
+            printf("\n\t EXIT POINT ");
+            exit(0);
+            break;
+        }
+        default:
+        {
+            printf("\n\t Please Enter a Valid Choice(1/2/3/4/5)");
+        }
+        }
+    }
+
+    return 0;
+}
+void enqueue()
+{
+    if (rear == N - 1)
+    {
+        printf("\n\tDon't Do Overflow'");
+    }
+    else if (front == -1 && rear == -1)
+    {
+        printf(" Enter a value to be enqueue:");
+        scanf("%d", &x);
+        front = rear = 0;
+        queue[rear] = x;
+    }
+    else
+    {
+        printf(" Enter a value to be enqueue:");
+        scanf("%d", &x);
+        rear++;
+        queue[rear] = x;
+    }
+}
+void dequeue()
+{
+    if (front == -1 && rear == -1)
+    {
+        printf("\n\t Stack is under flow");
+    }
+    else if (front == rear)
+    {
+        front = rear = -1;
+    }
+    else
+    {
+        printf("Deleted queue %d", queue[front]);
+        front++;
+    }
+}
+void display()
+{
+    if (front == -1 && rear == -1)
+    {
+        printf("The queue is empty");
+    }
+    else
+    {
+        printf("\n The elements in queue\n");
+        for (i = front; i < rear + 1; i++)
+            printf("\n%d", queue[i]);
+        // printf("\n Press Next Choice");
+    }
+}
+void peek()
+{
+    if (front == -1 && rear == -1)
+        printf("The queue is empty");
+    else
+        printf("Peek = %d", queue[front]);
+}
