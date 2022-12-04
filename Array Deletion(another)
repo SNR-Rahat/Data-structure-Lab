@@ -1,0 +1,38 @@
+#include <stdio.h>
+int main()
+{
+    int a[10], n, i, pos1, pos2;
+
+    printf("Enter the size of this array: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("succesfullly added item a[%d]: ", i);
+        scanf("%d", &a[i]);
+    }
+
+    printf("Enter the position You want to delete: ");
+    scanf("%d", &pos1);
+
+    printf("Enter the position You want to delete: ");
+    scanf("%d", &pos2);
+
+    for (i = pos1 - 1; i < n - 1; i++)
+    {
+        a[i] = a[i + 1];
+    }
+    n--;
+
+    for (i = pos2 - 2; i < n - 1; i++)
+    {
+        a[i] = a[i + 1];
+    }
+    n--;
+    printf("After deleting: ");
+    for (i = 0; i < n; i++)
+    {
+        printf("%d \n", a[i]);
+    }
+    return 0;
+}
