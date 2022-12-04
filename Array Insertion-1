@@ -1,0 +1,56 @@
+// Different Position also sequential position
+
+#include <stdio.h>
+int main()
+{
+    int a[50], size, i, j, element1, element2, pos1, pos2;
+
+    printf("Entwe Array Size:\n");
+    scanf("%d", &size);
+
+    printf("Enter Array elements:\n");
+
+    for (i = 0; i < size; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+
+    printf("The elements are:\n");
+
+    for (i = 0; i < size; i++)
+    {
+        printf("\nA[%d]=", i);
+        printf("%d", a[i]);
+    }
+
+    printf("\nEnter which position you want to insert 1st element:\n");
+    scanf("%d", &pos1);
+    printf("Enter the 1st element you want to insert:\n");
+    scanf("%d", &element1);
+
+    printf("Enter which position you want to insert 2nd element:\n");
+    scanf("%d", &pos2);
+    printf("Enter the 2nd element you want to insert:\n");
+    scanf("%d", &element2);
+
+    for (i = size - 1; i >= pos1 - 1; i--)
+    {
+        a[i + 1] = a[i];
+    }
+    a[pos1 - 1] = element1;
+    size++;
+
+    for (i = size - 1; i >= pos2 - 1; i--)
+    {
+        a[i + 1] = a[i];
+    }
+    a[pos2 - 1] = element2;
+    size++;
+
+    printf("After Insertion:\n");
+    for (i = 0; i < size; i++)
+    {
+        printf("A[%d] = %d\n", i, a[i]);
+    }
+    return 0;
+}
