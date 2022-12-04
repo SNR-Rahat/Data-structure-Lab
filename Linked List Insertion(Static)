@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    char name;
+    int data2,data3;
+    struct Node* next;
+};
+
+int main()
+{
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+    struct Node* forth = NULL;
+    struct Node* fifth = NULL;
+
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+    forth = (struct Node*)malloc(sizeof(struct Node));
+    fifth = (struct Node*)malloc(sizeof(struct Node));
+
+    head->name = 'a';
+    head->data2 = 11;
+    head->data3 = 12;
+    head->next = second;
+    second->name = 'b';
+    second->data2 = 21;
+    second->data3 = 22;
+
+    second->next = third;
+    third->name = 'c';
+    third->data2 = 31;
+    third->data3 = 32;
+    third->next = forth;
+
+    forth->name = 'd';
+    forth->data2 = 41;
+    forth->data3 = 42;
+    forth->next = fifth;
+
+    fifth->name = 'e';
+    fifth->data2 = 31;
+    fifth->data3 = 32;
+    fifth->next = NULL;
+
+
+    printf("Start = %d\n",head);
+    printf("Data in Start = %c\n",head->name);
+    printf("Data in Start = %d\n",head->data2);
+    printf("Data in Start = %d\n",head->data3);
+    printf("Pointer in first Node = %d\n",head->next);
+    printf("Second = %d\n",second);
+    printf("Data in Second Node = %c\n",second->name);
+    printf("Data in Second Node = %d\n",second->data2);
+    printf("Data in Second Node = %d\n",second->data3);
+    printf("Pointer in Second Node = %d\n",second->next);
+    printf("Third = %d\n",third);
+    printf("Data in Third Node = %c\n",third->name);
+    printf("Data in Third Node = %d\n",third->data2);
+    printf("Data in Third Node = %d\n",third->data3);
+    printf("Pointer in Third Node = %d\n",third->next);
+    printf("Third = %d\n",forth);
+    printf("Data in forth Node = %c\n",forth->name);
+    printf("Data in forth Node = %d\n",forth->data2);
+    printf("Data in forth Node = %d\n",forth->data3);
+    printf("Pointer in forth Node = %d\n",third->next);
+    printf("forth = %d\n",forth);
+    printf("Data in fifth Node = %c\n",fifth->name);
+    printf("Data in fifth Node = %d\n",fifth->data2);
+    printf("Data in fifth Node = %d\n",fifth->data3);
+    printf("Pointer in fifth Node = %d\n",fifth->next);
+
+
+    printf("[%d]   [%c][%d][%d][%d]   [%c][%d][%d][%d]   [%c][%d][%d][%d]   [%c][%d][%d][%d]   [%c][%d][%d][%d]",head,head->name,head->data2,head->data3,head->next,second->name,second->data2,second->data3,second->next,third->name,third->data2,third->data3,third->next,forth->name,forth->data2,forth->data3,fifth->name,fifth->data2,fifth->data3,fifth->next);
+
+
+    return 0;
+}
