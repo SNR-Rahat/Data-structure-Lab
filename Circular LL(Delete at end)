@@ -1,0 +1,129 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+// Function declaration
+void createCCL();
+void del_at_end();
+void display();
+
+struct node // define the node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *head, *newnode, *temp, *prevnode, *sentinel; /* temp for traversing, head pointer is fixed,
+ newnode for entry data or access data its main thing for linked list, prevnode for access previousnode,
+ sentinel for create dummy node */
+
+// Main Function
+int main()
+{
+    int choice;
+    // printf("Which operation do you want to perform?\n press1----Create a Circular Linked List\n press2 ---- Delete at the end\n press3----To display the Circular Linked List\n press4----Exit the Circular Linked List\n");
+    do
+    {
+        printf("\n\nWhich operation do you want to perform?\n press1----Create a Circular Linked List\n press2 ---- Delete at the end\n press3----To display the Circular Linked List\n press4----Exit the Circular Linked List\n");
+        printf("\nEnter the choice:");
+
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            createCCL();
+            display();
+            break;
+
+        case 2:
+            del_at_end();
+            display();
+            break;
+
+        case 3:
+            display();
+            break;
+        case 4:
+            exit(0);
+            break;
+
+        default:
+        {
+            printf("\nEnter a valid choice\n");
+        }
+        }
+    } while (choice != 4);
+
+    getch();
+}
+
+void createCCL()
+{
+    int choice = 1;
+    head = 0;
+    sentinel = (struct node *)malloc(sizeof(struct node));
+    printf("\nMemory address for sentinel node: %d", sentinel);
+    sentinel->data = -1;
+    sentinel->next = NULL;
+    printf("\nData of sentinel: %d\n", sentinel->data);
+    while (choice)
+    {
+        newnode = (struct node *)malloc(sizeof(struct node)); // malloc means return the 1st adress of struct node block
+        printf("\nMemory address of newnode: %d", newnode);
+        printf("\nEnter data for linked list:\n");
+        scanf("%d", &newnode->data);
+        newnode->next = 0;
+        if (head == 0)
+        {
+            head = temp = newnode;
+        }
+        else
+        {
+            temp->next = newnode;
+            temp = newnode;
+        }
+        printf("Do you want to Enter data again(Press 0 for No,Press 1 for Yes)?\n"); // 0 mean No and 1 mean Yes
+        scanf("%d", &choice);
+    }
+    sentinel->next = head;
+    newnode->next = sentinel;
+}
+
+void del_at_end()
+{
+    temp = sentinel;
+    while (temp->next != sentinel)
+    {
+        prevnode = temp;
+        temp = temp->next;
+    }
+    if (temp == head)
+    {
+        head = 0;
+    }
+    else
+    {
+        prevnode->next = sentinel;
+    }
+    free(temp);
+}
+
+void display()
+{
+    temp = sentinel;
+    printf("\nYour Circular Linked List:\n");
+    if (head == 0)//
+    {
+        printf("\nEmpty List\n");
+    }
+    else
+    {
+        while (temp->next != sentinel)
+        {
+            printf("[%d][%d]--->", temp->data, temp->next);
+            temp = temp->next;
+        }
+        printf("[%d][%d]--->", temp->data, temp->next);
+        printf("Go again sentinel");
+    }
+}
