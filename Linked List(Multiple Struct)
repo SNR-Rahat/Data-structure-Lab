@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<malloc.h>
+#include<stdlib.h>
+void main()
+{
+    struct node
+    {
+        char sec;
+        int age;
+        int id;
+        struct node *link;
+    };
+    struct node *head=0,*temp=0,*newnode=0;
+
+
+    int choice=1;
+
+
+    while(choice)
+    {
+        newnode=(struct node*)malloc(sizeof(struct node));
+        printf("The Memory we get %d\n ", newnode);
+        printf("Enter ur sec :\n");
+        scanf(" %c",&newnode->sec);
+        printf("Enter ur age :\n");
+        scanf("%d",&newnode->age);
+        printf("Enter ur ID :\n");     scanf("%d",&newnode->id);
+        newnode->link=0;
+        if(head==0)
+        {
+           head=temp=newnode;
+        }
+        else
+        {
+            temp->link=newnode ;
+            temp=newnode;
+        }
+        printf("Do uh want to continue? Press 1 to continue..Press 0 to Exit\n");
+        scanf("%d",&choice);
+    }
+
+
+	temp = head;
+	printf("Your Linked List:\n");
+	while(temp != 0)
+	{
+		if(temp->age >20)
+        {
+            printf("[%d]-->[%c] | [%d] | [%d]", temp, temp->sec,temp->age,temp->id);
+        }
+        temp = temp->link;
+	}
+
+
+    /*do
+    {
+        if(temp->age >20)
+        {
+            printf("[%d]-->[%c] | [%d] | [%d]", temp, temp->sec,temp->age,temp->id);
+        }
+        temp = temp->link;
+    } while (temp != 0);*/
+    printf("[Null]");
+    getch();
+}
